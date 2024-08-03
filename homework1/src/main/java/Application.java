@@ -8,7 +8,6 @@ public class Application {
         Kotik kot2 = new Kotik();
         kot2.setKotik(81, "Рыжик", 15, "мяу!!");
         kot1.liveAnotherDay();
-        kot2.printStat();
         System.out.println(kot1.getMeow().equals(kot2.getMeow()));
         System.out.println(Kotik.getCatsCounter());
     }

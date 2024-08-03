@@ -52,27 +52,30 @@ public  class Kotik {
     }
 
     public void liveAnotherDay() {
-        boolean res;
+        boolean res = (getHunger() > 0);
         int hour = 0;
         while (hour < 24){
-            switch (rnd.nextInt(4)) {
-                case 0:
-                    res = sleep();
-                    break;
-                case 1:
-                    res = chaseMouse();
-                    break;
-                case 2:
-                    res = play();
-                    break;
-                case 3:
-                    res = shapeClaws();
-                    break;
-                default:
-                    res = false;
-            }
             if (!res) {
                 eat();
+                res = true;
+            }
+            else {
+                switch (rnd.nextInt(4)) {
+                    case 0:
+                        res = sleep();
+                        break;
+                    case 1:
+                        res = chaseMouse();
+                        break;
+                    case 2:
+                        res = play();
+                        break;
+                    case 3:
+                        res = shapeClaws();
+                        break;
+                    default:
+                        res = false;
+                }
             }
             hour++;
         }
@@ -105,6 +108,7 @@ public  class Kotik {
             return true;
         }
         else{
+            lowHunger();
             return false;
         }
     }
@@ -116,6 +120,7 @@ public  class Kotik {
             return true;
         }
         else{
+            lowHunger();
             return false;
         }
     }
@@ -127,6 +132,7 @@ public  class Kotik {
             return true;
         }
         else{
+            lowHunger();
             return false;
         }
     }
@@ -138,6 +144,7 @@ public  class Kotik {
             return true;
         }
         else{
+            lowHunger();
             return false;
         }
     }
@@ -156,6 +163,10 @@ public  class Kotik {
         }else {
             this.hunger = hunger;
         }
+    }
+
+    public void lowHunger(){
+        System.out.println("мяяяяяяяу *Котик хочет кушать. Он не будет выпонять какие-то действия голодным!*");
     }
 
     public void setPettines(int pettines) {
