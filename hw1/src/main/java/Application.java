@@ -6,7 +6,7 @@ public class Application {
     public static void main(String[] args) {
         Kotik kot1 = new Kotik(73, "Вася", 12, "мяу");
         Kotik kot2 = new Kotik();
-        kot2.setKotik(81, "Рыжий", 15, "мяу!!");
+        kot2.setKotik(81, "Рыжик", 15, "мяу!!");
         kot1.liveAnotherDay();
         kot2.printStat();
         System.out.println(kot1.getMeow().equals(kot2.getMeow()));
