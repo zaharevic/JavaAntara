@@ -7,6 +7,9 @@ import model.Food.Food;
 import java.util.Objects;
 
 public abstract class Animal {
+    private static final int MAX_HUNGER = 100;
+    private static final int MIN_HUNGER = 0;
+
     private int hunger;
     private String name;
     private EnclosureSize requiredSize;
@@ -18,14 +21,9 @@ public abstract class Animal {
     };
 
     public boolean eat(Food food) throws WrongFoodException {
-        if(!food.getUsed()){
-            addHunger(food.getSaturation());
-            food.eated();
-            return true;
-        }else{
-            System.out.println("Эта еда уже съедена!");
-        }
-        return false;
+        addHunger(food.getSaturation());
+        food.eated();
+        return true;
     }
 
     public int getHunger() {
@@ -52,14 +50,14 @@ public abstract class Animal {
         this.requiredSize = requiredSize;
     }
 
-    public void addHunger(int addedHunger){
-        int total = addedHunger + getHunger();
-        if(total > 100){
-            total = 100;
-        } else if (total < 0) {
-            total = 0;
+    public void addHunger(int addedHunger) {
+        int total = addedHunger + hunger;
+        if (total > MAX_HUNGER) {
+            total = MAX_HUNGER;
+        } else if (total < MIN_HUNGER) {
+            total = MIN_HUNGER;
         }
-        setHunger(total);
+        hunger = total;
     }
 
     public boolean equals(Object o){

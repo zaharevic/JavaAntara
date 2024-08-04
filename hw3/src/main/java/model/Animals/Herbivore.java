@@ -11,21 +11,14 @@ public abstract class Herbivore extends Animal {
     }
 
     public boolean eat(Food food) throws WrongFoodException {
-        if(food instanceof Grass){
-            if(!food.getUsed()) {
-                System.out.println("Животное поело");
-                super.addHunger(food.getSaturation());
-                food.eated();
-                return true;
-            }
-            else {
-                System.out.println("Эта еда уже съедена!");
-            }
+        if(food instanceof Grass) {
+            addHunger(food.getSaturation());
+            food.eated();
+            return true;
         }
         else {
             throw new WrongFoodException("Ошибка! Это еда для хищников!");
         }
-        return false;
     }
 
     public int getHunger() {

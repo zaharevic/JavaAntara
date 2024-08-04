@@ -12,20 +12,13 @@ public abstract class Carnivorour extends Animal {
 
     public boolean eat(Food food) throws WrongFoodException {
         if(food instanceof Meat ){
-            if(!food.getUsed()) {
-                System.out.println("Животное поело");
-                super.addHunger(food.getSaturation());
-                food.eated();
-                return true;
-            }
-            else {
-                System.out.println("Эта еда уже съедена!");
-            }
+            addHunger(food.getSaturation());
+            food.eated();
+            return true;
         }
         else {
             throw new WrongFoodException("Ошибка! Это еда для травоядных!");
         }
-        return false;
     }
 
     public int getHunger() {

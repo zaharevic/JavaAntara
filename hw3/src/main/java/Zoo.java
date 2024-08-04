@@ -39,9 +39,7 @@ public class Zoo {
         Enclosure<Animal> enclosureM = new Enclosure<>(EnclosureSize.MEDIUM);
         Enclosure<Animal> enclosureL = new Enclosure<>(EnclosureSize.LARGE);
         Enclosure<Animal> enclosureXL = new Enclosure<>(EnclosureSize.EXTRALARGE);
-
         System.out.println("________________________________________________________________");
-
         enclosureS.addAnimal(pike1);
         enclosureS.addAnimal(duck1);
         enclosureS.addAnimal(cow);

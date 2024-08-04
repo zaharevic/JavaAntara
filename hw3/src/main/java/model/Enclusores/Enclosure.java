@@ -32,7 +32,7 @@ public class Enclosure<T extends Animal> {
                     }
                 }
                 if (animals.add(animal)) {
-                    System.out.println("Животное успешно помещенно в вольер");
+                    System.out.printf("%s успешно помещенн(a) в вольер!\n", animal.getName());
                     return true;
                 } else {
                     System.out.println("Системная ошибка");
