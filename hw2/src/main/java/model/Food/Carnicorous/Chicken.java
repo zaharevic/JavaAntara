@@ -3,5 +3,9 @@ package model.Food.Carnicorous;
 import model.Food.Meat;
 
 public class Chicken extends Meat {
-    private int saturation = 40;
+    private static final int SATURATION = 40;
+
+    public Chicken() {
+        super(SATURATION);
+    }
 }

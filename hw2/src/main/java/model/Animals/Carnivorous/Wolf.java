@@ -7,40 +7,45 @@ import model.Animals.Carnivorour;
 import java.util.Random;
 
 public class Wolf extends Carnivorour implements Run, Voice {
-    Random rnd = new Random();
-    private String voice;
+    private static final int RUN_HUNGER_DECREASE = 10;
+    private static final int VOICE_HUNGER_DECREASE = 5;
+    private static final int ACTIONS_COUNT = 3;
 
-    public Wolf(String name, int hunger, String voice){
-        super(hunger,name);
+    private final Random rnd = new Random();
+    private final String voice;
+
+    public Wolf(String name, int hunger, String voice) {
+        super(hunger, name);
         this.voice = voice;
-        System.out.println("Волк создан!");
+        System.out.printf("%s создан(а)!%n", getName());
     }
 
     @Override
     public void run() {
-        super.setHunger(super.getHunger()-10);
-        System.out.println("*Волк бежит*");
+        super.setHunger(super.getHunger() - RUN_HUNGER_DECREASE);
+        System.out.printf("*%s бежит*%n", getName());
     }
 
     @Override
     public String voice() {
-        super.setHunger(super.getHunger()-5);
+        super.setHunger(super.getHunger() - VOICE_HUNGER_DECREASE);
         return voice;
     }
 
     @Override
     public String toString() {
-        return "Волк{" +
-                "name='" + super.getName() + '\'' +
-                "hunger= " + super.getHunger() + '\'' +
-                ", voice='" + voice + '\'' +
-                '}';
+        return String.format("Волк{name='%s', hunger=%d, voice='%s'}",
+                super.getName(), super.getHunger(), voice);
     }
 
     @Override
     public void makeSomeAction() {
-        String[] noices = {"*Волк воет на луну*","*Волк лег на землю*","*Волк зашел под навес*"};
-        int i = rnd.nextInt(3);
-        System.out.println(noices[i]);
+        String[] noises = {
+                String.format("*%s воет на луну*", getName()),
+                String.format("*%s лег(ла) на землю*", getName()),
+                String.format("*%s зашел(ла) под навес*", getName())
+        };
+        int i = rnd.nextInt(ACTIONS_COUNT);
+        System.out.println(noises[i]);
     }
 }

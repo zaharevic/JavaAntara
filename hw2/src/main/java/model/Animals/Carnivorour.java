@@ -5,40 +5,20 @@ import model.Food.Grass;
 import model.Food.Meat;
 
 public abstract class Carnivorour extends Animal {
-    public Carnivorour(int hunger, String name){
+
+    public Carnivorour(int hunger, String name) {
         super(hunger, name);
     }
 
-    public boolean eat(Food food){
-        if(food instanceof Meat ){
-            if(!food.getUsed()) {
-                super.addHunger(food.getSaturation());
-                food.eated();
-                return true;
-            }
-            else {
-                System.out.println("Эта еда уже съедена!");
-            }
-        }
-        else {
+    @Override
+    public boolean eat(Food food) {
+        if (food instanceof Meat) {
+            addHunger(food.getSaturation());
+            food.eated();
+            return true;
+        } else {
             System.out.println("Ошибка! Это еда для травоядных!");
         }
         return false;
-    }
-
-    public int getHunger() {
-        return super.getHunger();
-    }
-
-    public void setHunger(int hunger) {
-        super.setHunger(hunger);
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
-    public void setName(String name) {
-        super.setName(name);
     }
 }

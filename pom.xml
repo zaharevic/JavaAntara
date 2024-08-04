@@ -10,7 +10,6 @@
   <name>hw_java</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>hw1</module>
     <module>hw2</module>
   </modules>
 

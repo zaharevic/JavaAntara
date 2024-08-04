@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import model.Animals.Actions.Swim;
 import model.Animals.Carnivorous.Bear;
 import model.Animals.Carnivorous.Pike;
@@ -24,7 +26,7 @@ public class Zoo {
         Hay hay = new Hay();
         Silo silo = new Silo();
 
-        Bear bear = new Bear("Дмитрий",90, "Бееееер");
+        Bear bear = new Bear("Дмитрий", 90, "Бееееер");
         Pike pike1 = new Pike("Анатолий", 70);
         Pike pike2 = new Pike("Владимир", 65);
         Pike pike3 = new Pike("Антонина", 63);
@@ -35,7 +37,13 @@ public class Zoo {
         Duck duck3 = new Duck("Дарья", 90, "Кря-кря");
         Sheep sheep = new Sheep("Доли", 77, "Бееееее");
 
-        Swim[] pound = {pike1, pike2, pike3, duck1, duck2, duck3};
+        List<Swim> pond = new ArrayList<>();
+        pond.add(pike1);
+        pond.add(pike2);
+        pond.add(pike3);
+        pond.add(duck1);
+        pond.add(duck2);
+        pond.add(duck3);
 
         worker.getVoice(bear);
         worker.getVoice(wolf);
@@ -50,7 +58,7 @@ public class Zoo {
         worker.feed(silo, cow);
         worker.feed(beef, duck1);
 
-        for(Swim anim : pound){
+        for (Swim anim : pond) {
             anim.swim();
         }
     }

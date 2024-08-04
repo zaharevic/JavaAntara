@@ -5,23 +5,21 @@ import model.Food.Grass;
 import model.Food.Meat;
 
 public abstract class Animal {
+    private static final int MAX_HUNGER = 100;
+    private static final int MIN_HUNGER = 0;
+
     private int hunger;
     private String name;
 
-    public Animal(int hunger, String name){
-        this.hunger=hunger;
+    public Animal(int hunger, String name) {
+        this.hunger = hunger;
         this.name = name;
-    };
+    }
 
-    public boolean eat(Food food){
-        if(!food.getUsed()){
-            addHunger(food.getSaturation());
-            food.eated();
-            return true;
-        }else{
-            System.out.println("Эта еда уже съедена!");
-        }
-        return false;
+    public boolean eat(Food food) {
+        addHunger(food.getSaturation());
+        food.eated();
+        return true;
     }
 
     public int getHunger() {
@@ -40,14 +38,14 @@ public abstract class Animal {
         this.name = name;
     }
 
-    public void addHunger(int addedHunger){
-        int total = addedHunger + getHunger();
-        if(total > 100){
-            total = 100;
-        } else if (total < 0) {
-            total = 0;
+    public void addHunger(int addedHunger) {
+        int total = addedHunger + hunger;
+        if (total > MAX_HUNGER) {
+            total = MAX_HUNGER;
+        } else if (total < MIN_HUNGER) {
+            total = MIN_HUNGER;
         }
-        setHunger(total);
+        hunger = total;
     }
 
     public abstract void makeSomeAction();
