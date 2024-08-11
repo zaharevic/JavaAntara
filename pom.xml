@@ -5,16 +5,33 @@
   <groupId>org.example</groupId>
   <artifactId>jmeter-java-dsl</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>jmeter-java-dsl</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>hw3java</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>us.abstracta.jmeter</groupId>
       <artifactId>jmeter-java-dsl</artifactId>
@@ -35,18 +52,12 @@
       <artifactId>ApacheJMeter_http</artifactId>
       <version>5.5</version>
     </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.10.2</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>10</source>
-          <target>10</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>
